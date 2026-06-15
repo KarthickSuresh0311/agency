@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>(function(){try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
+
+  <title>Contact — YourBrand | Claim Your Free Audit</title>
+  <meta name="description" content="Book a free 20-minute audit with YourBrand. Tell us about your business and we'll show you where you're losing customers and what to automate first." />
+  <meta name="theme-color" content="#0B0D12" />
+  <link rel="canonical" href="https://yourbrand.com/contact.html" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="Contact — YourBrand" />
+  <meta property="og:description" content="Claim your free audit. We reply within one working day." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="brand" aria-label="YourBrand home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__name">YourBrand</span>
+      </a>
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="services.html">Services</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active" aria-current="page">Contact</a>
+        <a href="contact.html" class="btn btn--small btn--primary">Free audit</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <p class="eyebrow reveal">Get started</p>
+        <h1 class="reveal">Claim your <span class="grad">free audit</span></h1>
+        <p class="page-hero__lead reveal">
+          Twenty focused minutes. We'll look at your business, show you exactly where customers are
+          slipping away, and tell you what to fix first — no pressure, no jargon.
+        </p>
+      </div>
+      <div class="hero__glow" aria-hidden="true"></div>
+    </section>
+
+    <section class="section" style="padding-top: clamp(40px,6vw,72px);">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- LEFT: what to expect -->
+          <div class="contact-aside reveal">
+            <h2>What happens next</h2>
+            <p>Send the form and here's exactly how it goes:</p>
+            <div class="contact-points">
+              <div class="contact-point">
+                <span class="contact-point__num">1</span>
+                <div><h3>We reply within a day</h3><p>A real person (the founder) gets back to you within one working day.</p></div>
+              </div>
+              <div class="contact-point">
+                <span class="contact-point__num">2</span>
+                <div><h3>A quick, free audit call</h3><p>We look at your business together and pinpoint your biggest, fastest win.</p></div>
+              </div>
+              <div class="contact-point">
+                <span class="contact-point__num">3</span>
+                <div><h3>You decide — no pressure</h3><p>You walk away with a clear plan whether or not we work together.</p></div>
+              </div>
+            </div>
+            <div class="contact-direct">
+              Prefer email? Reach us directly at <a href="mailto:hello@yourbrand.com">hello@yourbrand.com</a>
+            </div>
+          </div>
+
+          <!-- RIGHT: the form -->
+          <form id="contactForm" class="form reveal" novalidate>
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+            <input type="hidden" name="subject" value="New enquiry from your website" />
+            <!-- Honeypot: hidden from people, catches spam bots. Leave empty. -->
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <div class="form__row">
+              <label class="field">
+                <span>Your name</span>
+                <input type="text" name="name" required autocomplete="name" maxlength="100" />
+              </label>
+              <label class="field">
+                <span>Email</span>
+                <input type="email" name="email" required autocomplete="email" maxlength="150" />
+              </label>
+            </div>
+
+            <label class="field">
+              <span>Business name &amp; type</span>
+              <input type="text" name="business" autocomplete="organization" maxlength="150" placeholder="e.g. Bright Smile Dental Clinic" />
+            </label>
+
+            <label class="field">
+              <span>What would you like help with?</span>
+              <textarea name="message" rows="5" required maxlength="2000" placeholder="A sentence or two is plenty — what's slowing you down?"></textarea>
+            </label>
+
+            <button type="submit" class="btn btn--primary btn--lg btn--block" id="submitBtn">Send enquiry</button>
+
+            <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+            <p class="form__privacy">
+              By sending this you agree we can contact you about your enquiry. We never share your details.
+              See our <a href="privacy.html">privacy policy</a>.
+            </p>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq">
+      <div class="container container--narrow">
+        <div class="section__head reveal">
+          <p class="eyebrow">Questions</p>
+          <h2>Good to know</h2>
+        </div>
+        <div class="accordion">
+          <details class="acc reveal">
+            <summary>How much does it cost?</summary>
+            <p>It depends on what you need, so we quote per project after the free audit. Most clients start with a small, fast first system and add a simple monthly plan once it's proving its value.</p>
+          </details>
+          <details class="acc reveal">
+            <summary>Do I need to be technical?</summary>
+            <p>Not at all. We handle the entire build and hand you something that just works. You'll never touch code.</p>
+          </details>
+          <details class="acc reveal">
+            <summary>How fast can I see results?</summary>
+            <p>The first win — usually waking up your existing customer list — often produces bookings within the first week. Bigger systems take a little longer.</p>
+          </details>
+          <details class="acc reveal">
+            <summary>Is my customer data safe?</summary>
+            <p>Yes. We treat your customer information as sensitive, follow security best practices on everything we build, and never share or sell your data.</p>
+          </details>
+          <details class="acc reveal">
+            <summary>Which businesses do you work with?</summary>
+            <p>Service businesses that rely on calls, enquiries and bookings — clinics, home services, real estate, salons and similar. If you have customers to win back, we can help.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__name">YourBrand</span>
+        <p>We build the systems that bring your customers back.</p>
+      </div>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="services.html">Services</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+    <div class="container footer__legal">
+      <span>hello@yourbrand.com</span>
+      <span>© <span id="year"></span> YourBrand. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

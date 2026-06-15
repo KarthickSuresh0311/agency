@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>(function(){try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
+  <title>Privacy Policy — YourBrand</title>
+  <meta name="description" content="How YourBrand handles the information you share with us." />
+  <meta name="theme-color" content="#0B0D12" />
+  <link rel="canonical" href="https://yourbrand.com/privacy.html" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="brand" aria-label="YourBrand home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__name">YourBrand</span>
+      </a>
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="services.html">Services</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="btn btn--small btn--primary">Free audit</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="legal">
+    <div class="container container--narrow">
+      <h1>Privacy Policy</h1>
+      <!-- Update this date if you change the policy -->
+      <p class="updated">Last updated: June 2026</p>
+
+      <p>
+        This policy explains what information we collect when you use our website and contact us,
+        and how we use it. We keep it simple and we keep your data to a minimum.
+      </p>
+
+      <h2>What we collect</h2>
+      <p>When you submit our contact form, we collect the details you choose to give us:</p>
+      <ul>
+        <li>Your name</li>
+        <li>Your email address</li>
+        <li>Your business name and type (optional)</li>
+        <li>The message you write to us</li>
+      </ul>
+      <p>We do not use advertising trackers or sell data. Our website does not set marketing cookies.</p>
+
+      <h2>How we use it</h2>
+      <ul>
+        <li>To reply to your enquiry and discuss working together.</li>
+        <li>To follow up about the service you asked about.</li>
+      </ul>
+      <p>We will not use your details for anything else, and we will not share them with third parties for their own marketing.</p>
+
+      <h2>How your message reaches us</h2>
+      <p>
+        Our contact form is delivered through a third-party form service (Web3Forms), which passes your
+        message to our email inbox. Your details are processed only to deliver that message.
+      </p>
+
+      <h2>Analytics</h2>
+      <p>
+        We use privacy-friendly, cookieless analytics to count visits and see which pages are popular.
+        It does not use cookies, does not track you across other websites, and does not collect information
+        that identifies you personally.
+      </p>
+
+      <h2>How long we keep it</h2>
+      <p>
+        We keep enquiry emails for as long as needed to help you, and remove them when they are no longer
+        relevant. If you'd like your details deleted sooner, just ask.
+      </p>
+
+      <h2>Your rights</h2>
+      <p>
+        You can ask us to show you, correct, or delete the personal information we hold about you at any time.
+        To do so, contact us using the details below.
+      </p>
+
+      <h2>Contact</h2>
+      <!-- Change this email when your brand email is ready -->
+      <p>Email: <a href="mailto:hello@yourbrand.com">hello@yourbrand.com</a></p>
+
+      <a href="index.html" class="btn btn--ghost back">← Back to home</a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__legal">
+      <span>hello@yourbrand.com</span>
+      <span>© <span id="year"></span> YourBrand. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

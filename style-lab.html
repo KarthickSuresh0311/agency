@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Style Lab — pick your look</title>
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  :root { --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  body { font-family: var(--font); background: #f1f2f6; color: #0B0D12; line-height: 1.6; padding: 24px; }
+  .wrap { max-width: 960px; margin: 0 auto; }
+  .lab-head h1 { font-size: 1.6rem; letter-spacing: -.02em; }
+  .lab-head p { color: #5b6472; margin-top: 4px; font-size: .95rem; }
+
+  /* ---- Controls ---- */
+  .controls { background: #fff; border: 1px solid #e6e8ee; border-radius: 16px; padding: 20px 22px; margin: 20px 0; box-shadow: 0 10px 30px rgba(11,13,18,.06); }
+  .ctrl-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .ctrl-row + .ctrl-row { margin-top: 18px; padding-top: 18px; border-top: 1px solid #eef0f4; }
+  .ctrl-label { font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #5b6472; width: 92px; flex: none; }
+  .seg { display: inline-flex; gap: 6px; }
+  .seg button { font: inherit; font-weight: 600; font-size: .92rem; padding: 9px 18px; border-radius: 999px; border: 1px solid #e6e8ee; background: #fff; color: #0B0D12; cursor: pointer; transition: .15s; }
+  .seg button:hover { border-color: #b9bdc9; }
+  .seg button.on { background: #0B0D12; color: #fff; border-color: #0B0D12; }
+  .swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+  .sw { width: 38px; height: 38px; border-radius: 50%; border: 3px solid transparent; cursor: pointer; transition: .15s; position: relative; }
+  .sw:hover { transform: scale(1.08); }
+  .sw.on { border-color: #0B0D12; }
+  .anim-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .anim-btns button { font: inherit; font-weight: 600; font-size: .9rem; padding: 9px 16px; border-radius: 10px; border: 1px solid #e6e8ee; background: #fff; cursor: pointer; transition: .15s; }
+  .anim-btns button:hover { border-color: #0B0D12; }
+  .hint { font-size: .85rem; color: #808997; }
+
+  /* ---- Readout ---- */
+  .readout { background: #0B0D12; color: #fff; border-radius: 14px; padding: 16px 20px; margin: 20px 0; font-size: .95rem; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .readout b { color: #fff; }
+  .readout .pill { background: rgba(255,255,255,.12); padding: 4px 12px; border-radius: 999px; font-weight: 600; }
+
+  /* ============================================================
+     LIVE PREVIEW (driven by --bg, --text, --accent, etc.)
+     ============================================================ */
+  .stage {
+    --bg:#fff; --text:#0B0D12; --muted:#5b6472; --card:#fff; --border:#e6e8ee;
+    --heroBg:#0B0D12; --heroText:#fff; --heroMuted:#9aa2b1;
+    --accent:#6d5efc; --accent2:#a78bfa; --accentInk:#5847e0;
+    border: 1px solid #e6e8ee; border-radius: 18px; overflow: hidden; box-shadow: 0 18px 50px rgba(11,13,18,.12);
+    background: var(--bg); transition: opacity .3s ease, transform .3s ease;
+  }
+  .stage.leaving { opacity: 0; transform: translateY(-10px); }
+
+  /* mini nav */
+  .m-nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 22px; background: var(--bg); border-bottom: 1px solid var(--border); }
+  .m-brand { display: flex; align-items: center; gap: 8px; font-weight: 800; color: var(--text); }
+  .m-mark { width: 18px; height: 18px; border-radius: 6px; background: linear-gradient(135deg, var(--accent), var(--accent2)); }
+  .m-links { display: flex; gap: 16px; font-size: .85rem; color: var(--muted); font-weight: 500; }
+  .m-cta { background: var(--accent); color: #fff; padding: 7px 14px; border-radius: 999px; font-size: .82rem; font-weight: 600; }
+
+  /* mini hero */
+  .m-hero { position: relative; overflow: hidden; background: var(--heroBg); color: var(--heroText); padding: 56px 30px; }
+  .m-eyebrow { text-transform: uppercase; letter-spacing: .16em; font-size: .72rem; font-weight: 700; color: var(--accent2); }
+  .m-hero h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); letter-spacing: -.02em; margin: 10px 0 12px; color: var(--heroText); }
+  .m-grad { background: linear-gradient(100deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .m-hero p { color: var(--heroMuted); max-width: 440px; font-size: .98rem; }
+  .m-hero-cta { display: flex; gap: 12px; margin-top: 22px; }
+  .btn-a { background: var(--accent); color: #fff; padding: 11px 20px; border-radius: 999px; font-weight: 600; font-size: .9rem; cursor: pointer; transition: transform .15s, box-shadow .2s; border: 0; }
+  .btn-a:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.25); }
+  .btn-b { background: rgba(255,255,255,.08); color: var(--heroText); border: 1px solid rgba(255,255,255,.25); padding: 11px 20px; border-radius: 999px; font-weight: 600; font-size: .9rem; cursor: pointer; transition: .15s; }
+  .btn-b:hover { border-color: var(--heroText); }
+  .m-glow { position: absolute; inset: -40% -10% auto -10%; height: 90%; pointer-events: none;
+    background: radial-gradient(closest-side at 25% 35%, color-mix(in srgb, var(--accent) 55%, transparent), transparent 70%),
+                radial-gradient(closest-side at 80% 20%, color-mix(in srgb, var(--accent2) 40%, transparent), transparent 70%);
+    filter: blur(10px); animation: glowDrift 14s ease-in-out infinite; }
+  @keyframes glowDrift { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(3%,5%) scale(1.07)} }
+
+  /* mini cards */
+  .m-body { padding: 36px 30px; background: var(--bg); }
+  .m-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .m-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; transition: transform .2s, box-shadow .2s; }
+  .m-card:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(11,13,18,.14); }
+  .m-card .ico { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; color:#fff; font-weight:800; background: linear-gradient(135deg, var(--accent), var(--accent2)); margin-bottom: 12px; }
+  .m-card h3 { font-size: 1rem; color: var(--text); margin-bottom: 6px; }
+  .m-card p { font-size: .88rem; color: var(--muted); }
+
+  /* mini CTA */
+  .m-cta-band { margin: 0 30px 36px; background: linear-gradient(120deg, var(--accent), var(--accent2)); color:#fff; border-radius: 16px; padding: 30px; text-align: center; }
+  .m-cta-band h3 { font-size: 1.3rem; margin-bottom: 12px; }
+  .m-cta-band button { background:#fff; color: var(--accentInk); border:0; padding: 11px 22px; border-radius: 999px; font-weight: 600; cursor: pointer; }
+
+  /* reveal animation */
+  .rv { opacity: 0; transform: translateY(22px); transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1); }
+  .rv.in { opacity: 1; transform: none; }
+
+  @media (max-width: 640px) {
+    .m-links { display: none; }
+    .m-cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="lab-head">
+    <h1>🎨 Style Lab</h1>
+    <p>Click a theme and an accent colour — the preview updates live. Use the buttons to replay the animations. When you find a look you like, just tell me.</p>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <div class="ctrl-row">
+      <span class="ctrl-label">Theme</span>
+      <div class="seg" id="themeSeg">
+        <button data-theme="light">Light</button>
+        <button data-theme="balanced" class="on">Balanced</button>
+        <button data-theme="dark">Dark</button>
+      </div>
+    </div>
+    <div class="ctrl-row">
+      <span class="ctrl-label">Accent</span>
+      <div class="swatches" id="swatches"></div>
+    </div>
+    <div class="ctrl-row">
+      <span class="ctrl-label">Motion</span>
+      <div class="anim-btns">
+        <button id="replayBtn">▶ Replay reveal</button>
+        <button id="switchBtn">⇄ Simulate page switch</button>
+        <span class="hint">…and hover the cards to feel the lift. The hero glow drifts on its own.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- READOUT -->
+  <div class="readout">
+    <span>Selected:</span>
+    <span class="pill" id="outTheme">Balanced</span>
+    <span class="pill" id="outAccent">Violet</span>
+    <span style="opacity:.8">— tell me e.g. <b>"use teal with the dark theme"</b></span>
+  </div>
+
+  <!-- LIVE PREVIEW -->
+  <div class="stage" id="stage" data-theme="balanced">
+    <div class="m-nav">
+      <div class="m-brand"><span class="m-mark"></span> YourBrand</div>
+      <div class="m-links"><span>Services</span><span>Work</span><span>About</span></div>
+      <span class="m-cta">Free audit</span>
+    </div>
+
+    <div class="m-hero">
+      <div class="m-glow"></div>
+      <div class="rv"><span class="m-eyebrow">Digital Growth &amp; Automation Agency</span></div>
+      <div class="rv"><h2>We bring your <span class="m-grad">customers back</span>.</h2></div>
+      <div class="rv"><p>We recover the customers you're already losing, then automate the work that slows you down.</p></div>
+      <div class="rv m-hero-cta"><button class="btn-a">Get a free audit</button><button class="btn-b">See our work</button></div>
+    </div>
+
+    <div class="m-body">
+      <div class="m-cards">
+        <div class="m-card rv"><div class="ico">⚙️</div><h3>Automate</h3><p>Voice & WhatsApp automation, missed-call text-back, follow-ups.</p></div>
+        <div class="m-card rv"><div class="ico">📈</div><h3>Grow</h3><p>SEO, answer-engine visibility, content and outbound systems.</p></div>
+        <div class="m-card rv"><div class="ico">🚀</div><h3>Frontier</h3><p>Custom systems built around your business.</p></div>
+      </div>
+    </div>
+
+    <div class="m-cta-band rv">
+      <h3>See where you're leaking customers</h3>
+      <button>Claim your free audit</button>
+    </div>
+  </div>
+
+  <p style="text-align:center; color:#808997; font-size:.85rem; margin-top:20px;">This page is just a tool for choosing — it isn't part of your live website. Delete it whenever.</p>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var stage = document.getElementById("stage");
+
+  // ---- Theme presets ----
+  var themes = {
+    light:    { bg:"#ffffff", text:"#0B0D12", muted:"#5b6472", card:"#ffffff", border:"#e6e8ee", heroBg:"#f6f7fb", heroText:"#0B0D12", heroMuted:"#5b6472" },
+    balanced: { bg:"#ffffff", text:"#0B0D12", muted:"#5b6472", card:"#ffffff", border:"#e6e8ee", heroBg:"#0B0D12", heroText:"#ffffff", heroMuted:"#9aa2b1" },
+    dark:     { bg:"#0B0D12", text:"#ffffff", muted:"#9aa2b1", card:"#14171f", border:"rgba(255,255,255,.10)", heroBg:"#0B0D12", heroText:"#ffffff", heroMuted:"#9aa2b1" }
+  };
+
+  // ---- Accent presets ----
+  var accents = [
+    { name:"Violet",  a:"#6d5efc", a2:"#a78bfa", ink:"#5847e0" },
+    { name:"Blue",    a:"#3b6df5", a2:"#74a4ff", ink:"#2f57c7" },
+    { name:"Teal",    a:"#11b3a3", a2:"#5fded0", ink:"#0c8d80" },
+    { name:"Emerald", a:"#10b981", a2:"#5ee0b0", ink:"#059669" },
+    { name:"Amber",   a:"#f59e0b", a2:"#fbc04a", ink:"#b45309" },
+    { name:"Coral",   a:"#f0653f", a2:"#ff9472", ink:"#c4421f" },
+    { name:"Rose",    a:"#ec4899", a2:"#f9a8d4", ink:"#be185d" }
+  ];
+
+  var current = { theme:"balanced", accent: accents[0] };
+
+  function applyTheme(name){
+    var t = themes[name];
+    stage.style.setProperty("--bg", t.bg);
+    stage.style.setProperty("--text", t.text);
+    stage.style.setProperty("--muted", t.muted);
+    stage.style.setProperty("--card", t.card);
+    stage.style.setProperty("--border", t.border);
+    stage.style.setProperty("--heroBg", t.heroBg);
+    stage.style.setProperty("--heroText", t.heroText);
+    stage.style.setProperty("--heroMuted", t.heroMuted);
+    current.theme = name;
+    document.getElementById("outTheme").textContent = name.charAt(0).toUpperCase() + name.slice(1);
+  }
+
+  function applyAccent(acc){
+    stage.style.setProperty("--accent", acc.a);
+    stage.style.setProperty("--accent2", acc.a2);
+    stage.style.setProperty("--accentInk", acc.ink);
+    current.accent = acc;
+    document.getElementById("outAccent").textContent = acc.name;
+  }
+
+  // Build swatches
+  var swWrap = document.getElementById("swatches");
+  accents.forEach(function(acc, i){
+    var b = document.createElement("button");
+    b.className = "sw" + (i === 0 ? " on" : "");
+    b.style.background = "linear-gradient(135deg, " + acc.a + ", " + acc.a2 + ")";
+    b.title = acc.name;
+    b.setAttribute("aria-label", acc.name);
+    b.addEventListener("click", function(){
+      document.querySelectorAll(".sw").forEach(function(s){ s.classList.remove("on"); });
+      b.classList.add("on");
+      applyAccent(acc);
+    });
+    swWrap.appendChild(b);
+  });
+
+  // Theme buttons
+  document.getElementById("themeSeg").addEventListener("click", function(e){
+    var btn = e.target.closest("button");
+    if (!btn) return;
+    document.querySelectorAll("#themeSeg button").forEach(function(b){ b.classList.remove("on"); });
+    btn.classList.add("on");
+    applyTheme(btn.getAttribute("data-theme"));
+  });
+
+  // ---- Reveal animation ----
+  var revealEls = stage.querySelectorAll(".rv");
+  function playReveal(){
+    revealEls.forEach(function(el, i){
+      el.classList.remove("in");
+      el.style.transitionDelay = Math.min(i * 90, 600) + "ms";
+    });
+    void stage.offsetWidth; // force reflow so the animation restarts
+    requestAnimationFrame(function(){
+      revealEls.forEach(function(el){ el.classList.add("in"); });
+    });
+  }
+
+  // ---- Simulate page switch ----
+  function switchPage(){
+    stage.classList.add("leaving");
+    setTimeout(function(){
+      stage.classList.remove("leaving");
+      playReveal();
+    }, 320);
+  }
+
+  document.getElementById("replayBtn").addEventListener("click", playReveal);
+  document.getElementById("switchBtn").addEventListener("click", switchPage);
+
+  // Init
+  applyTheme("balanced");
+  applyAccent(accents[0]);
+  setTimeout(playReveal, 200);
+})();
+</script>
+</body>
+</html>

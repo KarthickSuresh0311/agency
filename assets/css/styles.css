@@ -379,6 +379,10 @@ h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; }
 .founder__body h3 { font-size: 1.2rem; margin-bottom: 4px; }
 .founder__role { color: var(--accent-ink); font-weight: 600; font-size: .92rem; margin-bottom: 12px; }
 .founder__body p { color: var(--muted); margin-bottom: 10px; }
+.founder__photo { width: 84px; height: 84px; border-radius: 20px; flex: none; object-fit: cover; box-shadow: 0 10px 24px rgba(15,118,110,.32); }
+.founder__links { display: flex; gap: 18px; margin-top: 6px; }
+.founder__links a { color: var(--accent-ink); font-weight: 600; font-size: .92rem; text-decoration: none; }
+.founder__links a:hover { text-decoration: underline; }
 
 /* Services page */
 .svc-pillar { padding: clamp(40px, 6vw, 72px) 0; border-bottom: 1px solid var(--line); }

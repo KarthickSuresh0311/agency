@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /dev/
+
+# Update the domain below once your real domain is connected.
+Sitemap: https://yourbrand.com/sitemap.xml

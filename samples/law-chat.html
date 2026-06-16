@@ -49,7 +49,7 @@
       <div class="chat__head"><div class="chat__av">⚖️</div><div><b>Intake Assistant</b><span>confidential · replies instantly</span></div></div>
       <div class="chat__body" id="body"></div>
       <div class="chips" id="chips"></div>
-      <form class="compose" id="form"><input id="inp" placeholder="Describe your matter…" autocomplete="off" /><button type="submit">Send</button></form>
+      <p style="text-align:center;font-size:12px;color:var(--muted);padding:0 16px 14px;margin:0">Guided demo — tap a question to see a reply.</p>
     </div>
 
     <footer class="site">Harper Legal · regulated · first consultation free</footer>
@@ -80,8 +80,7 @@
       else { add("Thanks — that's something our solicitors can advise on. Let me book you a free consult. Can I take your number?","bot"); chips(["Book a consultation","Talk to a solicitor"]); }
     },650);
   }
-  var f=document.getElementById("form"), inp=document.getElementById("inp");
-  f.addEventListener("submit",function(e){ e.preventDefault(); var v=inp.value.trim(); if(!v)return; inp.value=""; ask(v); });
+  /* Click-only demo: questions are chosen via the chips above (no free-text input). */
   add("Hello, and thanks for reaching out to Harper Legal. What type of legal matter can we help with?","bot");
   chips(["Employment dispute","Property dispute","Consultation cost","Talk to a solicitor"]);
 })();

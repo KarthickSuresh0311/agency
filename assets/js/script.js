@@ -93,25 +93,6 @@
     });
   }
 
-  /* ---- 2d. Scroll-down cue in the hero ------------------ */
-  var heroEl = document.querySelector(".hero, .page-hero");
-  if (heroEl) {
-    var cue = document.createElement("button");
-    cue.type = "button";
-    cue.className = "scroll-cue";
-    cue.setAttribute("aria-label", "Scroll down");
-    cue.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
-    heroEl.appendChild(cue);
-
-    cue.addEventListener("click", function () {
-      window.scrollBy({ top: Math.round(window.innerHeight * 0.85), left: 0, behavior: "smooth" });
-    });
-    // Fade the cue out once the visitor starts scrolling
-    window.addEventListener("scroll", function () {
-      cue.style.opacity = window.scrollY > 60 ? "0" : "";
-    }, { passive: true });
-  }
-
   /* ---- 3. Current year in footer ------------------------ */
   var yearEl = document.getElementById("year");
   if (yearEl) { yearEl.textContent = new Date().getFullYear(); }

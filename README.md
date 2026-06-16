@@ -7,20 +7,29 @@ plain files you can open and edit. Written for a non-engineer.
 
 ## 📁 What's in here
 
-| File | What it is |
-|------|------------|
-| `index.html` | Home page |
-| `services.html` | Full services menu (the 4 pillars) |
-| `work.html` | Portfolio / samples |
-| `about.html` | About, mission, founder, values |
-| `contact.html` | Contact form + FAQ |
-| `thank-you.html` | The page people see after sending the form |
-| `privacy.html` | Privacy policy |
-| `terms.html` | Terms of service (a starting template) |
-| `styles.css` | How everything looks (shared by all pages) |
-| `script.js` | The interactivity (menu, form, animations — shared) |
-| `favicon.svg` | The little icon in the browser tab |
-| `vercel.json` | Security settings for when it's hosted on Vercel |
+The **pages stay at the root** (so the web addresses are clean, e.g. `/services.html`).
+Everything else lives in folders:
+
+```
+index.html, services.html, work.html, about.html,
+contact.html, thank-you.html, privacy.html, terms.html   ← the 8 pages
+│
+├── assets/
+│   ├── css/styles.css   ← how everything looks (shared)
+│   ├── js/script.js     ← interactivity: menu, form, animations (shared)
+│   └── img/favicon.svg  ← the browser-tab icon
+│
+├── demos/               ← drop voice-call recordings here (see demos/README.md)
+├── dev/                 ← internal preview tools, NOT part of the live site
+│   ├── style-lab.html       (colour/animation playground)
+│   └── sample-preview.html  (sample-display preview)
+│
+├── vercel.json          ← security + hosting settings for Vercel
+├── README.md            ← this file
+└── .gitignore
+```
+
+The `dev/` folder is just for you — you can delete it before launch with no effect on the site.
 
 ---
 
@@ -80,8 +89,8 @@ No server to manage, ever.
 ---
 
 ## 🎨 Want to change the colours?
-Open `styles.css`, look at the very top (`:root`). Change `--accent` to any colour and the whole
-site re-themes itself. Nothing else to touch.
+Open `assets/css/styles.css`, look at the very top (`:root`). Change `--accent` to any colour and the
+whole site re-themes itself. Nothing else to touch.
 
 ---
 
